@@ -12,8 +12,17 @@
   <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
 </head>
 <body>
-<form class="form-signin" method="POST" action="{{ route('Login') }}">
+<form class="form-signin" method="POST" action="{{ route('Login') }}">@csrf
   <h1 class="h3 mb-3 font-weight-normal">ログインフォーム</h1>
+  @if ($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach ($errors->all() as $errors)
+            <li>{{ $errors}}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
   <label for="inputPassword" class="sr-only">Password</label>
