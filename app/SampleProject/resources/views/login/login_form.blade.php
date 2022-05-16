@@ -20,6 +20,12 @@
         @foreach ($errors->all() as $errors)
             <li>{{ $errors}}</li>
         @endforeach
+
+        @if (session('login_error'))
+         <div class="alert alert-danger">
+             {{ session('login_error') }}
+         </div>
+      @endif
       </ul>
     </div>
   @endif
